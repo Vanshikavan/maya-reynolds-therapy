@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Theme tokens
+   Every colour on the site comes from these variables, so a palette is
+   swapped by redefining the tokens on a wrapper (see [data-theme]).
+   Default = Dr. Maya Reynolds redesign ("coastal loft": warm ivory,
+   sand, slate blue, clay). The original Conejo Valley palette lives
+   under data-theme="original" and is used only by the /clone route.
+------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --c-cream: #faf7f2;      /* light section background            */
+  --c-white: #ffffff;      /* white section background            */
+  --c-sand: #e7dccb;       /* accent: warm sand section background */
+  --c-ink: #2a313a;        /* headings, dark banner base          */
+  --c-text: #4b5661;       /* body copy                           */
+  --c-primary: #3f556b;    /* slate blue: buttons, footer bar     */
+  --c-secondary: #c4826a;  /* clay: script accents, highlights    */
+  --c-line: #d9d0c3;       /* hairlines                           */
+  --c-on-dark: #f6f1ea;    /* text on ink/primary backgrounds     */
+}
+
+[data-theme="original"] {
+  --c-cream: #f6f4ee;
+  --c-white: #ffffff;
+  --c-sand: #e3d9ca;
+  --c-ink: #2b2b2b;
+  --c-text: #4e5d6c;
+  --c-primary: #86b3b3;
+  --c-secondary: #86b3b3;
+  --c-line: #ddd7cc;
+  --c-on-dark: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--c-cream);
+  --color-white: var(--c-white);
+  --color-sand: var(--c-sand);
+  --color-ink: var(--c-ink);
+  --color-text: var(--c-text);
+  --color-primary: var(--c-primary);
+  --color-secondary: var(--c-secondary);
+  --color-line: var(--c-line);
+  --color-on-dark: var(--c-on-dark);
+
+  --font-heading: var(--ff-heading), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--ff-body), "Mulish", system-ui, sans-serif;
+  --font-script: var(--ff-script), cursive;
+
+  /* Fluid type scale — same formula the original uses:
+     (size-value - 1) * 1.2vw + 1rem, capped for very wide screens. */
+  --text-h1: min(calc(1rem + 3.12vw), 4.5rem);
+  --text-h2: min(calc(1rem + 2.28vw), 3.5rem);
+  --text-h3: min(calc(1rem + 1.68vw), 3rem);
+  --text-h4: min(calc(1rem + 0.84vw), 2rem);
+  --text-body: min(calc(1rem + 0.12vw), 1.15rem);
+  --text-small: 0.8rem;
+
+  --spacing-gutter: 6vw;      /* page side padding  */
+  --spacing-section: 7rem;    /* vertical rhythm    */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+  background: var(--c-cream);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1 { font-size: var(--text-h1); line-height: 1.22; }
+h2 { font-size: var(--text-h2); line-height: 1.28; }
+h3 { font-size: var(--text-h3); line-height: 1.32; }
+h4 { font-size: var(--text-h4); line-height: 1.36; }
+
+h1 em, h2 em, h3 em, h4 em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Hand-written accent word inside a heading */
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--c-secondary);
+  font-size: 1.35em;
+  line-height: 0.7;
+  letter-spacing: 0;
+  vertical-align: baseline;
+}
+
+/* Small uppercase "eyebrow" label and lead paragraphs */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  line-height: 1.8;
+}
+
+/* Underline-style text button — the original's primary button */
+.btn-line {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 0 0.35rem;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  text-decoration: none;
+}
+.btn-line::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid currentColor;
+  transition: right 0.8s ease;
+}
+.btn-line:hover::before {
+  right: 100%;
+}
+.btn-line.on-dark {
+  color: var(--c-on-dark);
+}
+
+/* Pill outline button — used for header CONTACT and BOOK NOW */
+.btn-pill {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid var(--c-ink);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-pill:hover {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: var(--c-on-dark);
+}
+
+/* Header nav link with the sliding underline from the original */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.3rem 0;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+}
+.nav-link::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  margin-top: 1px;
+  background: var(--c-ink);
+  transition: width 0.5s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Scroll-in reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
