@@ -1,5 +1,4 @@
-# Dr. Maya Reynolds, PsyD — Therapy website (Grow My Therapy assignment)
-
+# Dr. Maya Reynolds, PsyD — Therapy website (Grow My Therapy )
 A homepage clone of [Conejo Valley Family Counseling](https://www.conejovalleycounseling.com/home),
 redesigned for an imaginary Santa Monica psychologist, **Dr. Maya Reynolds, PsyD**, with a new
 palette, profile-based copy, new imagery and a custom **"Our Office"** section.
