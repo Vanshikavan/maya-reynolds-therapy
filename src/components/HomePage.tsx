@@ -10,11 +10,14 @@ import Expertise from "@/components/sections/Expertise";
 import Approach from "@/components/sections/Approach";
 import Statement from "@/components/sections/Statement";
 import Specialties from "@/components/sections/Specialties";
+import Office from "@/components/sections/Office";
+import Faq from "@/components/sections/Faq";
 import Cta from "@/components/sections/Cta";
 
 /**
  * The homepage layout, in the original template's section order.
- * `content` decides the copy, images and (via the theme wrapper) the palette.
+ * `content` decides the copy, images and (via the theme wrapper) the palette;
+ * the optional Office and FAQ sections render only when the content has them.
  */
 export default function HomePage({
   content,
@@ -36,6 +39,8 @@ export default function HomePage({
         <Approach approach={content.approach} id="about" />
         <Statement statement={content.statement} />
         <Specialties specialties={content.specialties} id="approach" />
+        {content.office && <Office office={content.office} id="office" />}
+        {content.faq && <Faq faq={content.faq} id="faqs" />}
         <Cta cta={content.cta} id="contact" />
       </main>
       <Footer brand={content.brand} footer={content.footer} />

@@ -1,7 +1,7 @@
 import type { SiteContent } from "./types";
 
 /**
- * Part 2 — all homepage copy for Dr. Maya Reynolds, PsyD.
+ * Part 2 & 3 — all homepage copy for Dr. Maya Reynolds, PsyD.
  * Single source of truth: her profile (licensed clinical psychologist,
  * Santa Monica CA, adults with anxiety / panic / trauma / burnout,
  * CBT + EMDR + mindfulness + body-oriented work, in-person + telehealth).
@@ -220,6 +220,64 @@ export const maya: SiteContent = {
           "Anxiety and trauma live in the body as much as the mind. Somatic, body-oriented approaches help release chronic tension and difficulty sleeping, so you feel more regulated and at ease in daily life.",
         cta: "Learn more",
         href: "#faqs",
+      },
+    ],
+  },
+
+  office: {
+    eyebrow: "Our office",
+    heading: (
+      <>
+        A calm, private space in <span className="script">Santa Monica</span>
+      </>
+    ),
+    body: [
+      "My office at 123th Street 45 W in Santa Monica was designed to feel calm and grounding from the moment you arrive: tall windows full of natural light, exposed brick, warm wood floors, and a comfortable, uncluttered room where you can settle in. Clients often share that the space itself helps them feel more at ease.",
+      "Sessions here are private and unhurried. And when coming in isn’t practical, the same care is available through secure telehealth for clients anywhere in California—so support fits around your life, not the other way around.",
+    ],
+    details: [
+      { label: "Location", value: "123th Street 45 W, Santa Monica, CA 90401" },
+      { label: "Sessions", value: "In-person in Santa Monica · Telehealth across California" },
+      { label: "The space", value: "Quiet, private, natural light, comfortable and uncluttered" },
+    ],
+    images: [
+      {
+        src: "/images/office-windows.jpg",
+        alt: "Dr. Reynolds’ Santa Monica therapy office with tall windows, exposed brick and natural light",
+      },
+      {
+        src: "/images/office-seating.jpg",
+        alt: "The counseling room with a grey sofa, armchair, plants and warm wood floors",
+      },
+    ],
+  },
+
+  faq: {
+    heading: (
+      <>
+        Common <span className="script">questions</span>
+      </>
+    ),
+    items: [
+      {
+        q: "Do you offer online therapy?",
+        a: "Yes. I offer secure telehealth sessions for clients located anywhere in California, alongside in-person sessions at my Santa Monica office. Many clients combine both depending on their week.",
+      },
+      {
+        q: "Who do you work with?",
+        a: "Adults. Most of my clients are high-achieving, thoughtful people navigating anxiety, panic, trauma, burnout, or perfectionism—often while appearing “fine” on the outside. Many are entrepreneurs, creatives, or professionals living and working in a fast-paced environment.",
+      },
+      {
+        q: "What is a session with you like?",
+        a: "Warm, collaborative, and grounded. Sessions are structured enough to feel supportive, while leaving space for reflection and depth. You’ll be actively involved in the process, and we’ll focus on tools that help you feel more regulated in daily life—not just in the room.",
+      },
+      {
+        q: "How do you approach trauma?",
+        a: "Carefully, and at your pace. I work with single-incident trauma as well as more complex, long-standing patterns, integrating EMDR and body-oriented techniques with an emphasis on safety and stabilization first.",
+      },
+      {
+        q: "Where is your office?",
+        a: "123th Street 45 W, Santa Monica, CA 90401. It’s a quiet, private space with natural light and a comfortable, uncluttered environment—designed to feel calm the moment you walk in.",
       },
     ],
   },
