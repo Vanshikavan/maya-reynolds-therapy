@@ -3,10 +3,10 @@ A homepage clone of [Conejo Valley Family Counseling](https://www.conejovalleyco
 redesigned for an imaginary Santa Monica psychologist, **Dr. Maya Reynolds, PsyD**, with a new
 palette, profile-based copy, new imagery and a custom **"Our Office"** section.
 
-- **Live site:** _add Vercel URL here_
-- **Layout clone (Part 1):** `/clone` on the same deployment — the original template's structure,
+- **Live site:** https://maya-reynolds-therapy-phi.vercel.app/
+- **Layout clone (Part 1):** `https://maya-reynolds-therapy-phi.vercel.app/clone`  — the original template's structure,
   copy and palette, rendered through the exact same components
-- **Video walkthrough:** _add Loom URL here_
+
 
 ## Stack
 
@@ -91,8 +91,4 @@ npm run dev      # http://localhost:3000  and  http://localhost:3000/clone
 npm run build    # production build
 ```
 
-## Deploying
 
-The project is a standard Next.js app — import the GitHub repository into Vercel (or Netlify)
-with default settings; no environment variables are required. After deploying, update
-`meta.url` in `src/content/maya.tsx` so the canonical URL and JSON-LD point at the live domain.
